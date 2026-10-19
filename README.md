@@ -6,6 +6,8 @@ A interface móvel usa vistas separadas para categorias e artigos, seleção de 
 
 No iPhone, «Pedidos (N)» abre a lista de pedidos em curso e «+ Novo» permite criar um pedido por mesa, nome ou sem identificação. O nome pode ser alterado posteriormente. A aplicação avisa quando já existe uma mesa aberta, evitando duplicações acidentais.
 
+No painel «Ver pedido», as ações de limpar e concluir atuam diretamente sobre o pedido móvel ativo. Se existirem muitas categorias ou artigos, a deslocação ocorre apenas dentro da respetiva grelha/lista; a página principal mantém o cabeçalho e a barra inferior fixos.
+
 ## Desenvolvimento
 
 ```bash
