@@ -14,6 +14,10 @@ O botão de configuração abre o acesso local de administrador. Na primeira uti
 
 Esta proteção é local ao dispositivo e não equivale a autenticação centralizada. Os voluntários utilizam por defeito o modo operacional e não veem os controlos de edição.
 
+O catálogo inicial publicado inclui preços demonstrativos em euros e cêntimos para os artigos fornecidos. Estes valores devem ser confirmados pela comissão antes de utilização oficial e podem ser alterados no modo administrador. Ao concluir um pedido, a aplicação solicita o valor recebido, valida se cobre o total e mostra o troco antes da confirmação; não é criado histórico financeiro.
+
+Como a aplicação é estática e sem servidor, uma alteração feita dentro do administrador de um dispositivo fica nesse dispositivo. Para distribuir alterações aos restantes telemóveis, exporte o catálogo e importe-o em cada dispositivo; para alterar o catálogo publicado por defeito é necessário atualizar e republicar o projeto.
+
 ## Desenvolvimento
 
 ```bash
