@@ -1,4 +1,4 @@
-const CACHE = 'pedidos-v5';
+const CACHE = 'pedidos-v6';
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(['./', './index.html', './manifest.webmanifest'])));
   self.skipWaiting();
