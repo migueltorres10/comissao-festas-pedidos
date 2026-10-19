@@ -1,0 +1,11 @@
+{
+  "name": "Pedidos · Comissão de Festas",
+  "short_name": "Pedidos",
+  "description": "Registo de pedidos da Comissão de Festas 2026/2027.",
+  "lang": "pt-PT",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f7f5ef",
+  "theme_color": "#173f3a",
+  "icons": []
+}
