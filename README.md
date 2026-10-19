@@ -8,6 +8,12 @@ No iPhone, «Pedidos (N)» abre a lista de pedidos em curso e «+ Novo» permite
 
 No painel «Ver pedido», as ações de limpar e concluir atuam diretamente sobre o pedido móvel ativo. Se existirem muitas categorias ou artigos, a deslocação ocorre apenas dentro da respetiva grelha/lista; a página principal mantém o cabeçalho e a barra inferior fixos.
 
+## Administração
+
+O botão de configuração abre o acesso local de administrador. Na primeira utilização é definido um PIN com pelo menos quatro dígitos; apenas o hash SHA-256 é guardado no dispositivo. O modo administrador permite gerir categorias, artigos, preços, estados, ícones, ordem e importação/exportação. Para artigos sem preço confirmado, deixe o preço vazio: ficam como «Preço por definir» e não podem ser adicionados a pedidos.
+
+Esta proteção é local ao dispositivo e não equivale a autenticação centralizada. Os voluntários utilizam por defeito o modo operacional e não veem os controlos de edição.
+
 ## Desenvolvimento
 
 ```bash
