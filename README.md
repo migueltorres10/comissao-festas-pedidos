@@ -2,7 +2,9 @@
 
 PWA leve para registar pedidos nos eventos da Comissão de Festas 2026/2027 de Duas Igrejas, Penafiel. Funciona sem backend: cada dispositivo mantém o seu próprio catálogo e os seus próprios pedidos em IndexedDB.
 
-A interface móvel usa vistas separadas para categorias e artigos, seleção de quantidade em painel inferior e uma barra fixa para consultar o pedido. É possível manter vários pedidos abertos em simultâneo (por exemplo, Pedido 1, Pedido 2 ou Mesa 1), alternar entre eles e concluir/eliminar apenas o pedido ativo.
+A interface móvel usa vistas separadas para categorias e artigos, seleção de quantidade em painel inferior e uma barra fixa para consultar o pedido. O ecrã principal usa a área útil `100dvh`, sem scroll da página: as grelhas/listas e os painéis têm scroll interno apenas quando necessário. É possível manter vários pedidos abertos em simultâneo (por exemplo, Pedido 1, Pedido 2 ou Mesa 1), alternar entre eles e concluir/eliminar apenas o pedido ativo.
+
+No iPhone, «Pedidos (N)» abre a lista de pedidos em curso e «+ Novo» permite criar um pedido por mesa, nome ou sem identificação. O nome pode ser alterado posteriormente. A aplicação avisa quando já existe uma mesa aberta, evitando duplicações acidentais.
 
 ## Desenvolvimento
 
