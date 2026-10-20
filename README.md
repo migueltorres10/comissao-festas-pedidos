@@ -8,6 +8,10 @@ No iPhone, «Pedidos (N)» abre a lista de pedidos em curso e «+ Novo» permite
 
 No painel «Ver pedido», as ações de limpar e concluir atuam diretamente sobre o pedido móvel ativo. Se existirem muitas categorias ou artigos, a deslocação ocorre apenas dentro da respetiva grelha/lista; a página principal mantém o cabeçalho e a barra inferior fixos.
 
+Categorias e artigos aparecem em duas colunas no telemóvel, com cartões compactos. O contentor de scroll ocupa toda a largura: a barra de deslocação do navegador fica na margem direita, com o espaçamento aplicado apenas aos cartões. Abrir um painel e adicionar unidades conserva a posição da lista.
+
+Ao tocar em «Concluir», abre-se o painel «Receber e concluir» com o campo «Valor recebido» focado e `inputmode="decimal"` para o teclado numérico decimal do iPhone. O troco é calculado enquanto se escreve e aparece em destaque. Valores insuficientes não permitem concluir. «Confirmar e concluir» retira apenas esse pedido; «Voltar» mantém-no aberto.
+
 ## Administração
 
 O botão de configuração abre o acesso local de administrador. Na primeira utilização é definido um PIN com pelo menos quatro dígitos; apenas o hash SHA-256 é guardado no dispositivo. O modo administrador permite gerir categorias, artigos, preços, estados, ícones, ordem e importação/exportação. Para artigos sem preço confirmado, deixe o preço vazio: ficam como «Preço por definir» e não podem ser adicionados a pedidos.
@@ -30,7 +34,13 @@ Verificação local:
 ```bash
 npm test
 npm run build
+npx playwright install webkit chromium
+npm run test:ui
 ```
+
+Os testes de interface usam WebKit com emulação de iPhone nas dimensões 320×568, 375×667, 390×844, 430×932, 768×1024 e 1280×800. Incluem um catálogo sintético de 12 categorias e 30 artigos, medição de `scrollHeight/clientHeight/scrollTop`, interação com o último cartão, preservação de posição, recebimento/troco, isolamento dos pedidos, persistência, administração e funcionamento offline. Um teste Chromium adicional envia um gesto tátil real pelo protocolo de input. As capturas ficam em `test-results/`, fora do versionamento. A emulação não reproduz a interface física do teclado nem as barras do Safari num iPhone real.
+
+O Service Worker `pedidos-v12` pré-carrega o JavaScript e CSS da build, remove apenas caches de versões anteriores da aplicação e preserva IndexedDB. Ao obter uma nova versão num dispositivo já controlado, a aplicação espera pela gravação pendente antes de recarregar. A navegação online procura a versão publicada; offline usa a última versão instalada.
 
 ## Catálogo e utilização
 
