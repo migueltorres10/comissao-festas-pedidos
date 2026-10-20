@@ -18,7 +18,9 @@ O botão de configuração abre o acesso local de administrador. Na primeira uti
 
 Esta proteção é local ao dispositivo e não equivale a autenticação centralizada. Os voluntários utilizam por defeito o modo operacional e não veem os controlos de edição.
 
-O catálogo inicial publicado inclui preços demonstrativos em euros e cêntimos para os artigos fornecidos. Estes valores devem ser confirmados pela comissão antes de utilização oficial e podem ser alterados no modo administrador. Ao concluir um pedido, a aplicação solicita o valor recebido, valida se cobre o total e mostra o troco antes da confirmação; não é criado histórico financeiro.
+O catálogo publicado inclui os artigos e preços fornecidos pelo responsável em 20/10/2026: 75 opções de venda, incluindo Favaios com cerveja pequeno e as doses de 2,5 cl de Beirão, CRF, Croft e Whisky. Chiclas, chupas, gomas e rebuçados são vendidos à unidade. Mantêm-se as seis categorias existentes: Cafetaria, Cervejaria, Destilados e Vinhos, Sumos e Águas, Snack e Petiscos. Os alimentos da segunda lista fornecida estão em Petiscos; os restantes snacks ficam em Snack. Os valores podem ser alterados no modo administrador. Não é criado histórico financeiro.
+
+A revisão `menu-2026-10-20-1` atualiza uma única vez o catálogo de cada instalação quando essa instalação recebe a nova versão publicada. Mantém as categorias existentes, os identificadores dos artigos correspondentes, o PIN, os artigos personalizados não pertencentes à demonstração e os pedidos em curso com os seus nomes/preços originais. Os artigos antigos de demonstração não presentes na nova lista saem do catálogo, mas continuam nos pedidos onde já foram adicionados. Os novos pedidos usam os novos preços. Edições administrativas posteriores não são repostas ao reiniciar.
 
 Como a aplicação é estática e sem servidor, uma alteração feita dentro do administrador de um dispositivo fica nesse dispositivo. Para distribuir alterações aos restantes telemóveis, exporte o catálogo e importe-o em cada dispositivo; para alterar o catálogo publicado por defeito é necessário atualizar e republicar o projeto.
 
@@ -38,9 +40,9 @@ npx playwright install webkit chromium
 npm run test:ui
 ```
 
-Os testes de interface usam WebKit com emulação de iPhone nas dimensões 320×568, 375×667, 390×844, 430×932, 768×1024 e 1280×800. Incluem um catálogo sintético de 12 categorias e 30 artigos, medição de `scrollHeight/clientHeight/scrollTop`, interação com o último cartão, preservação de posição, recebimento/troco, isolamento dos pedidos, persistência, administração e funcionamento offline. Um teste Chromium adicional envia um gesto tátil real pelo protocolo de input. As capturas ficam em `test-results/`, fora do versionamento. A emulação não reproduz a interface física do teclado nem as barras do Safari num iPhone real.
+Os testes de interface usam WebKit com emulação de iPhone nas dimensões 320×568, 375×667, 390×844, 430×932, 768×1024 e 1280×800. Incluem um catálogo sintético de 12 categorias e 30 artigos, medição de `scrollHeight/clientHeight/scrollTop`, interação com o último cartão, preservação de posição, recebimento/troco, isolamento dos pedidos, persistência, administração e funcionamento offline. Verificam também as 75 opções reais, nomes compridos sem sobreposição e a atualização de uma instalação antiga com pedido aberto. Um teste Chromium adicional envia um gesto tátil real pelo protocolo de input. As capturas ficam em `test-results/`, fora do versionamento. A emulação não reproduz a interface física do teclado nem as barras do Safari num iPhone real.
 
-O Service Worker `pedidos-v12` pré-carrega o JavaScript e CSS da build, remove apenas caches de versões anteriores da aplicação e preserva IndexedDB. Ao obter uma nova versão num dispositivo já controlado, a aplicação espera pela gravação pendente antes de recarregar. A navegação online procura a versão publicada; offline usa a última versão instalada.
+O Service Worker `pedidos-v13` pré-carrega o JavaScript e CSS da build, remove apenas caches de versões anteriores da aplicação e preserva IndexedDB. Ao obter uma nova versão num dispositivo já controlado, a aplicação espera pela gravação pendente antes de recarregar. A navegação online procura a versão publicada; offline usa a última versão instalada.
 
 ## Catálogo e utilização
 

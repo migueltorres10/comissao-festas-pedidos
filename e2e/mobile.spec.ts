@@ -244,7 +244,7 @@ test("catálogo real compacto, quantidade e recebimento em ecrã reduzido", asyn
   await page.screenshot({
     path: testInfo.outputPath("artigos-reais-iphone.png"),
   });
-  await page.getByRole("button", { name: /Fino/ }).tap();
+  await page.getByRole("button", { name: /^🍺 Fino 1,30/ }).tap();
   await page.locator("#quantity-plus").tap();
   await page.screenshot({ path: testInfo.outputPath("quantidade-iphone.png") });
   await page.locator("#add-quantity").tap();

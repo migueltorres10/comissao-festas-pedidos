@@ -4,6 +4,7 @@ import {
   type Catalog,
   type LegacyState,
 } from "./domain";
+import { CATALOG_REVISION } from "./catalog-data";
 const DB = "comissao-festas-pedidos";
 const STORE = "estado";
 const open = () =>
@@ -14,19 +15,23 @@ const open = () =>
     request.onerror = () => reject(request.error);
   });
 export async function loadState(fallbackCatalog: Catalog): Promise<AppState> {
-  try {
-    const db = await open();
-    const raw = await new Promise<AppState | LegacyState | undefined>(
-      (resolve, reject) => {
-        const request = db.transaction(STORE).objectStore(STORE).get("state");
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
-      },
-    );
-    return migrateState(raw, fallbackCatalog);
-  } catch {
-    return migrateState(undefined, fallbackCatalog);
-  }
+  const db = await open();
+  const raw = await new Promise<AppState | LegacyState | undefined>(
+    (resolve, reject) => {
+      const request = db.transaction(STORE).objectStore(STORE).get("state");
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    },
+  );
+  db.close();
+  const migrated = migrateState(raw, fallbackCatalog);
+  if (
+    !raw ||
+    !("catalogRevision" in raw) ||
+    raw.catalogRevision !== CATALOG_REVISION
+  )
+    await saveState(migrated);
+  return migrated;
 }
 let saveQueue = Promise.resolve();
 export function saveState(state: AppState) {

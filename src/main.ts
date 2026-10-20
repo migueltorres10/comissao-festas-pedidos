@@ -696,4 +696,7 @@ function fitVisualViewport() {
 window.visualViewport?.addEventListener("resize", fitVisualViewport);
 window.visualViewport?.addEventListener("scroll", fitVisualViewport);
 fitVisualViewport();
-void boot();
+void boot().catch(() => {
+  app.innerHTML = '<section class="sheet"><h2>Não foi possível abrir os dados</h2><p>Os dados existentes não foram substituídos. Volte a abrir a aplicação para tentar novamente.</p><button class="primary" id="retry-load">Tentar novamente</button></section>';
+  document.querySelector('#retry-load')?.addEventListener('click', () => location.reload());
+});

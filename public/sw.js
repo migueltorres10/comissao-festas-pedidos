@@ -1,4 +1,4 @@
-const CACHE = 'pedidos-v12';
+const CACHE = 'pedidos-v13';
 const scope = self.registration.scope;
 const indexUrl = new URL('index.html', scope).href;
 
